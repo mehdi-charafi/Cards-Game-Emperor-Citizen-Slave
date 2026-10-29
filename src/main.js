@@ -1,60 +1,61 @@
 import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
+import {nicknameValidation} from "./players.js"
+import { addProfiles } from "./storage"
+import {profileRendering} from "./players.js"
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+//Start
+let profilesSection = document.querySelector("#exist-profiles")
+profileRendering(profilesSection)
 
-<div class="ticks"></div>
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+// Profile Creation
+let iconSection = document.querySelector("#profile-icons")
+let selectedIcon = ""
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+iconSection.addEventListener("click", (event) => {
+    let icons = document.querySelectorAll(".iconify")
+    let icon = event.target.closest(".iconify")
+    if(!icon) return
+    selectedIcon = icon.getAttribute("data-icon")
+    icons.forEach((i) => {
+        i.classList.remove(`border-2`, `border-amber-500/70`)
+        i.classList.add(`border-2`, `border-blue-300`)
+    })
+    icon.classList.remove(`border-2`, `border-blue-300`)
+    icon.classList.add(`border-2`, `border-amber-500/70`)
+})
 
-setupCounter(document.querySelector('#counter'))
+let form = document.querySelector("#profile-creation")
+form.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    let inputValue = document.querySelector("#profile-creation-input").value
+    let submitMessage = document.querySelector("#submit-message")
+    const formData = new FormData(form)
+    let isValid = nicknameValidation(inputValue)
+    if(inputValue == "") {
+        submitMessage.textContent = ""
+        return
+    } 
+    if(nicknameValidation(inputValue)) {
+        if(selectedIcon == "") {
+            submitMessage.textContent = "Choose a profile icon"
+            submitMessage.style.color = "red"
+            return
+        }
+        let newProfile = {nickname: inputValue, avatar: selectedIcon}
+        addProfiles(newProfile)
+        profileRendering(profilesSection)
+        submitMessage.textContent = "Your profile is added!"
+        submitMessage.style.color = "green"
+        form.reset()
+
+    } else {
+        submitMessage.textContent = "Your username must be (3-15) characters"
+        submitMessage.style.color = "red"
+    }
+       
+    
+})
+
+
