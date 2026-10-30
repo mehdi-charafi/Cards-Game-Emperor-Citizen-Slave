@@ -1,11 +1,14 @@
 import './style.css'
-import {nicknameValidation} from "./players.js"
-import { addProfiles } from "./storage"
-import {profileRendering} from "./players.js"
+import {loginRendering, nicknameValidation, profileRendering} from "./players.js"
+import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile } from "./storage"
+
+
 
 //Start
 let profilesSection = document.querySelector("#exist-profiles")
+let loginSection = document.querySelector("#login")
 profileRendering(profilesSection)
+loginRendering(loginSection)
 
 
 // Profile Creation
@@ -19,9 +22,9 @@ iconSection.addEventListener("click", (event) => {
     selectedIcon = icon.getAttribute("data-icon")
     icons.forEach((i) => {
         i.classList.remove(`border-2`, `border-amber-500/70`)
-        i.classList.add(`border-2`, `border-blue-300`)
+        i.classList.add(`border-2`, `border-slate-600`)
     })
-    icon.classList.remove(`border-2`, `border-blue-300`)
+    icon.classList.remove(`border-2`, `border-slate-600`)
     icon.classList.add(`border-2`, `border-amber-500/70`)
 })
 
@@ -58,4 +61,62 @@ form.addEventListener("submit", (event) => {
     
 })
 
+
+// profile removal
+let profilesList = document.querySelector("#exist-profiles")
+profilesList.addEventListener("click", (event) => {
+    if(event.target.classList.contains("delete-btn")) {
+    let profileCard = event.target.closest(".profile-card")
+    if(profileCard) {
+    let profileName = profileCard.getAttribute("data-nickname")
+    removeProfiles(profileName)
+    profileRendering()
+
+    }
+}})
+
+
+// active profile
+
+// add active
+    profilesList.addEventListener("click", (event) => {
+    if(event.target.closest(".select-btn")) {
+    let profileCard = event.target.closest(".profile-card")
+    if(!profileCard) return
+      let profiles = profilesList.querySelectorAll(".profile-card")
+    profiles.forEach((p) => {
+        p.classList.remove(`border-2`, `border-amber-500/70`)
+        p.classList.add(`border-2`, `border-slate-600`)
+        p.querySelector(".profile-avatar").classList.remove(`border-2`, `border-amber-500/70`)
+        p.querySelector(".profile-avatar").classList.add(`border-2`, `border-slate-600`)
+    })
+    profileCard.classList.remove(`border-2`, `border-slate-600`)
+    profileCard.classList.add(`border-2`, `border-amber-500/70`)
+    profileCard.querySelector(".profile-avatar").classList.remove(`border-2`, `border-slate-600`)
+    profileCard.querySelector(".profile-avatar").classList.add(`border-2`, `border-amber-500/70`)
+    let profileName = profileCard.getAttribute("data-nickname")
+    let profileIcon = profileCard.querySelector(".profile-avatar").getAttribute("data-icon")
+    let activeProfile = {nickname: profileName, avatar: profileIcon}
+    setActiveProfile(activeProfile)
+    }
+    loginRendering(loginSection)
+    })
+
+// remove active
+let desconnectBtn = document.querySelector("#desconnect") 
+desconnectBtn.addEventListener("click", () => {
+    removeActiveProfile()
+    loginRendering(loginSection)
+    window.location.reload()
+})
+
+    
+
+    
+
+   
+
+    
+
+    
 

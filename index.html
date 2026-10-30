@@ -9,32 +9,48 @@
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
   </head>
   <body>
+  <header class="flex justify-between items-center bg-slate-950 h-13 w-full border-blue-300 lg:pl-20 lg:pr-20 h-[60px]">
+  <div id="icon&name" class="hidden lg:block lg:flex items-center gap-10">
+    <span class="iconify text-amber-400 w-13 h-13 rounded-xl" data-icon="game-icons:crown"></span>
+    <p class="text-bold text-3xl text-amber-100">Emperor, Citizen, Slave</p>
+  </div>
+  <div id="login&desconnect" class="flex gap-20 p-4 lg:gap-10">
+  <div id="login">
+    <div class="flex text-center gap-2">
+      <span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:spectacle-lenses"></span>
+      <p class="text-bold text-2xl text-amber-100">Guest</p>
+  </div>
+  </div>
+    <button id="desconnect" type="button" class="bg-slate-600 border-2 border-black w-[150px] h-[46px] rounded-3xl cursor-pointer text-lg">Desconnect</button>
+  </div>
+
+  </header>
 
   <!---------------------------Profiles Section ------------------------------> 
 
-  <section id="profiles" class="items-center text-center p-5 pl-50 pr-50">
-    <h1 class="p-5 text-4xl md:text-5xl font-black tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_6px_rgba(0,0,0,0.9)] border-b-2 border-amber-500/40 pb-2 inline-block"><p class="">Cards Game:</p><p> Emperor, Citizen, Slave</p></h1>
+  <section id="profiles" class="items-center text-center lg:pl-50 lg:pr-50">
+    <h1 class="p-5 text-4xl md:text-5xl font-black tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_6px_rgba(0,0,0,0.9)] lg:border-b-2 border-amber-500/40 pb-2 inline-block"><p class="">Cards Game:</p><p> Emperor, Citizen, Slave</p></h1>
     <div id="profiles-manager" class="flex flex-col bg-slate-900/90 border-3 border-amber-500/70 m-5 p-10 rounded-3xl">
         
-        <div class="flex justify-center gap-20">
+        <div class="lg:flex justify-center gap-20">
             <div id="div1">
                 <h2 class="text-xl md:text-2xl font-bold text-amber-100 tracking-widest uppercase text-center drop-shadow border-b-2 border-amber-100 p-5">Create A New Profile</h2>
                 <form id="profile-creation" class="bg-slate-950/80 rounded-xl mt-5 p-5 shadow-2xl">
                   <div>
                     <h3 class="text-lg md:text-xl text-[#94a3b8] ">Enter your nickname</h3>
-                    <input id="profile-creation-input" class="border-2 rounded-3xl p-2 w-[250px] m-3 text-white text-center mb-5" type="text" placeholder="3-15 characters">
+                    <input id="profile-creation-input" class="border-2 rounded-3xl p-2 w-[250px] mt-3 lg:m-3 text-white text-center mb-5" type="text" placeholder="3-15 characters">
                   </div>
                   <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent my-6"></div>
                   <div id="profile-icons" class="grid grid-cols-5 gap-3 justify-center">
                
-<span class="iconify text-amber-400 w-13 h-13 border-2 border-blue-300 rounded-xl" data-icon="game-icons:dwarf-face"></span>     
-<span class="iconify text-amber-400 w-13 h-13 border-2 border-blue-300 rounded-xl" data-icon="game-icons:winged-sword"></span>
-<span class="iconify text-amber-400 w-13 h-13 border-2 border-blue-300 rounded-xl" data-icon="game-icons:robe"></span>
-<span class="iconify text-amber-400 w-13 h-13 border-2 border-blue-300 rounded-xl" data-icon="game-icons:sinagot"></span>
-<span class="iconify text-amber-400 w-13 h-13 border-2 border-blue-300 rounded-xl" data-icon="game-icons:anubis"></span>
-<span class="iconify text-amber-400 w-13 h-13 border-2 border-blue-300 rounded-xl" data-icon="game-icons:diamonds-smile"></span>
-<span class="iconify text-amber-400 w-13 h-13 border-2 border-blue-300 rounded-xl" data-icon="game-icons:wolf-head"></span>
-<span class="iconify text-amber-400 w-13 h-13 border-2 border-blue-300 rounded-xl" data-icon="game-icons:woman-elf-face"></span>
+<span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:dwarf-face"></span>     
+<span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:winged-sword"></span>
+<span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:robe"></span>
+<span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:sinagot"></span>
+<span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:anubis"></span>
+<span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:diamonds-smile"></span>
+<span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:wolf-head"></span>
+<span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="game-icons:woman-elf-face"></span>
 
               
               </div>
@@ -48,8 +64,8 @@
             </div>
             <div class="w-[2px] bg-gradient-to-b from-transparent via-amber-500/70 to-transparent self-stretch my-2"></div>
             <div id="div2">
-                <h2 class="text-xl md:text-2xl font-bold text-amber-100 tracking-widest uppercase text-center drop-shadow border-b-2 border-amber-100 p-5">Profils Existants</h2>
-                <div id="exist-profiles" class="bg-slate-950/80 rounded-xl mt-5 p-5 shadow-2xl">
+                <h2 class="text-xl md:text-2xl font-bold text-amber-100 tracking-widest uppercase text-center drop-shadow border-b-2 border-amber-100 p-5">Exist Profiles</h2>
+                <div id="exist-profiles" class="bg-slate-950/80 rounded-xl mt-5 pt-1 pb-1 lg:p-5 shadow-2xl">
                   
                 </div>
 
