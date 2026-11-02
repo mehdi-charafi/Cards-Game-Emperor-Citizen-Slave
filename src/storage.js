@@ -1,7 +1,3 @@
-import { loginRendering } from "./players";
-
-let profiles = JSON.parse(localStorage.getItem("profiles")) || []
-let activeProfile = JSON.parse(localStorage.getItem("activeprofile")) || {}
 
 // profiles
 export function getProfiles() {
@@ -36,12 +32,10 @@ export function saveActiveProfile(activeP) {
 }
 
 export function setActiveProfile(activeP) {
-    activeProfile = activeP
-    saveActiveProfile(activeProfile)
+    saveActiveProfile(activeP)
 
 }
 
 export function removeActiveProfile() {
-    activeProfile = {}
-    saveActiveProfile(activeProfile)
+    saveActiveProfile({})
 }

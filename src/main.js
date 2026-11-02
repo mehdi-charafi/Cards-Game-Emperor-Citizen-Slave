@@ -1,6 +1,7 @@
 import './style.css'
-import {loginRendering, nicknameValidation, profileRendering} from "./players.js"
+import {loginRendering, nicknameValidation, profileRendering, selectedProfile} from "./players.js"
 import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile } from "./storage"
+import { toHome, toGamePlay } from './ui.js'
 
 
 
@@ -9,6 +10,7 @@ let profilesSection = document.querySelector("#exist-profiles")
 let loginSection = document.querySelector("#login")
 profileRendering(profilesSection)
 loginRendering(loginSection)
+selectedProfile(profilesSection)
 
 
 // Profile Creation
@@ -111,6 +113,15 @@ desconnectBtn.addEventListener("click", () => {
 })
 
     
+// Navigations
+
+// home
+let nickname = document.querySelector("#nickname")
+nickname.addEventListener("click", () => toHome())
+
+// Game
+let play = document.querySelector("#play")
+play.addEventListener("click", () => toGamePlay())
 
     
 
