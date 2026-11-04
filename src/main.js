@@ -15,6 +15,32 @@ loginRendering(loginSection)
 selectedProfile(profilesSection)
 
 
+// Load game
+if (gameState.round > 1 && gameState.round < 12) {
+    toGamePlay();
+    staticsRender();
+     
+    let playerSpace = document.querySelector("#playercards")
+       let botSpace = document.querySelector("#botcards")
+       playerSpace.innerHTML = ""
+gameState.playerHand.forEach(c => {
+   playerSpace.innerHTML += `
+   <div data-card="${c.name}" class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+   <img src="${c.url}">
+   </div>
+   `
+});
+botSpace.innerHTML = ""
+gameState.botHand.forEach(c => {
+   botSpace.innerHTML += `
+   <div data-card="${c.name}" class="card overflow-hidden bg-cover bg-center w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+   <img class="w-full h-full object-cover" src="images/bg-card.jpg">
+   </div>
+   `
+});
+}
+
+
 // Profile Creation
 let iconSection = document.querySelector("#profile-icons")
 let selectedIcon = ""
@@ -122,13 +148,13 @@ let nickname = document.querySelector("#nickname")
 nickname.addEventListener("click", () => toHome())
 
 // GameStart
-let play = document.querySelector("#play")
-play.addEventListener("click", () => {
+let play = document.querySelectorAll(".play")
+play.forEach(b => b.addEventListener("click", () => {
     resetGameState()
     toGamePlay()
     distripution()
     staticsRender()
-})
+}))
 
 //GamePlay
 let playerCards = document.querySelector("#playercards")

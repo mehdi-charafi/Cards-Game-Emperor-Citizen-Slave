@@ -1,5 +1,5 @@
-import { gameState } from "./gameState"
-import { staticsRender, playGroundRender } from "./ui"
+import { gameState , saveGame} from "./gameState"
+import { staticsRender, playGroundRender, showGameOver } from "./ui"
 
 //Deck
 let emperorCards = [{name: "emperor", url: "images/emperor.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}]
@@ -8,6 +8,7 @@ let slaveCards = [{name: "slave", url: "images/slave.png"}, {name: "citizen", ur
 // Duel
 
 export function duel(PlayerCard, BotCard) {
+   console.log(`PlayerCard = ${PlayerCard} and BotCard = ${BotCard}`)
    let winner = gameRule(PlayerCard, BotCard)
    if (winner == PlayerCard)return "vectory"
    else if ( winner == BotCard)return "defeat"
@@ -15,10 +16,19 @@ export function duel(PlayerCard, BotCard) {
 }
 
 function gameRule(PlayerCard, BotCard) {
-if(PlayerCard == BotCard)return "equal"
-   else if (PlayerCard == "emperor" && BotCard == "citizen" || PlayerCard == "citizen" && BotCard == "emperor")return "emperor"
-   else if (PlayerCard == "slave" && BotCard == "citizen" || BotCard == "citizen" && PlayerCard == "slave")return "citizen"
-   else if (PlayerCard == "emperor" && BotCard == "slave" || BotCard == "slave" && PlayerCard == "emperor")return "slave"
+if (PlayerCard === BotCard) {
+      return "equal";
+   }
+   else if ((PlayerCard === "emperor" && BotCard === "citizen") || (PlayerCard === "citizen" && BotCard === "emperor")) {
+      return "emperor";
+   }
+   else if ((PlayerCard === "slave" && BotCard === "citizen") || (PlayerCard === "citizen" && BotCard === "slave")) {
+      return "citizen";
+   }
+   else if ((PlayerCard === "emperor" && BotCard === "slave") || (PlayerCard === "slave" && BotCard === "emperor")) {
+      return "slave";
+   }
+   return "equal";
 }
 
 export function distripution(card, botCard) {
@@ -48,7 +58,7 @@ gameState.botHand.forEach(c => {
    </div>
    `
 });
-
+saveGame()
 }
 
 export function game(card, cardType) {
@@ -58,37 +68,50 @@ let botCardsSection = document.querySelector("#botcards")
 let botCards = Array.from(botCardsSection.querySelectorAll(".card"))
 let botCard = botCards.find(c => c.getAttribute("data-card") == botCardType && !c.classList.contains("hidden"))
 
+   removeCard(card, botCard, cardType, botCardType)
    playGroundRender(card, botCard)
 
-   if(duel(cardType, botCardType) == "vectory") {
-      if(cardType == "slave") {
-      gameState.playerScore += 5
-      removeCard(card, botCard, cardType, botCardType)
-      } else { 
-      gameState.playerScore += 1
-       removeCard(card, botCard, cardType, botCardType)
-      }
-   } else if(duel(cardType, botCardType) == "defeat") {
-      if(botCardType == "slave") {
-      gameState.botScore += 5
-      removeCard(card, botCard, cardType, botCardType)
-      } else {
-      gameState.botScore += 1
-       removeCard(card, botCard, cardType, botCardType)
-      }
-   } else {
-      removeCard(card, botCard, cardType, botCardType)
-   }
+   setTimeout(() => {
+      let result = duel(cardType, botCardType)
 
-   if(gameState.playerHand.length == 0) {
-     if(gameState.round == 3 || gameState.round == 6 || gameState.round == 9){gameState.group += 1}
-    gameState.round += 1
-    
-    staticsRender()
-    distripution(card, botCard)
-     
-    
-   }
+      if(result == "vectory") {
+         if(cardType == "slave") {
+            gameState.playerScore += 5
+         } else { 
+            gameState.playerScore += 1
+         }
+         staticsRender()
+       
+      } else if(result == "defeat") {
+         if(botCardType == "slave") {
+            gameState.botScore += 5
+         } else {
+            gameState.botScore += 1
+         }
+         staticsRender()
+         
+      } else {
+         
+      }
+
+      
+      if(gameState.playerHand.length == 0) {
+         if(gameState.round == 3 || gameState.round == 6 || gameState.round == 9) {
+            gameState.group += 1
+         }
+         if(gameState.round == 12) {
+         showGameOver()
+         resetGameState()
+         return
+      }
+         gameState.round += 1
+         staticsRender()
+         distripution()
+      }
+      saveGame()
+      
+   }, 1000); 
+   
 }
 
 function removeCard(playerCard, botCard , cardType, botCardType) {

@@ -9,6 +9,14 @@ export const gameState = {
     botHand: []
 };
 
+export function saveGame() {
+    localStorage.setItem("gameState", JSON.stringify(gameState));
+}
+
+export function loadGame() {
+    Object.assign(gameState, JSON.parse(localStorage.getItem("gameState") || "{}"))}
+
+
 export function resetGameState() {
     gameState.round = 1;
     gameState.group = 1;
@@ -17,4 +25,9 @@ export function resetGameState() {
     gameState.botScore = 0;
     gameState.playerHand = [];
     gameState.botHand = [];
+
+    localStorage.removeItem("gameState");
 }
+
+
+loadGame()
