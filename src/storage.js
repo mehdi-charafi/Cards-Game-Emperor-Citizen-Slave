@@ -11,12 +11,18 @@ export function saveProfiles(profilesArray) {
 
 export function addProfiles(newProfile) {
     let profiles = getProfiles()
+    if(profiles.some(p => p.nickname == newProfile.nickname)) {
+        alert("The nickname is already used")
+        return false
+    }
     profiles.push(newProfile)
     saveProfiles(profiles)
+    return true
 }
 
 export function removeProfiles(profileName) {
     let profiles = getProfiles()
+    if(!window.confirm("Are you sure ?"))return
     profiles = profiles.filter((p) => p.nickname != profileName)
     saveProfiles(profiles)
     window.location.reload()

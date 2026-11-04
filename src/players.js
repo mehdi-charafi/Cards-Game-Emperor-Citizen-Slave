@@ -3,14 +3,8 @@ import { getActiveProfile, getProfiles } from "./storage"
 
 
 export function nicknameValidation(inputValue) {
-   let isVliad1 = /^[A-Za-z0-9]{3,15}$/.test(inputValue)
-   let isValid2 = getProfiles().some((p) => p[`nickname`].toLowerCase() == inputValue.toLowerCase())
-
-   if(isVliad1 == true && isValid2 == false) {
-      return true
-   } else {
-      return false
-   }
+   let isVliad = /^[A-Za-z0-9]{3,15}$/.test(inputValue)
+   return isVliad == true
 
 }
 

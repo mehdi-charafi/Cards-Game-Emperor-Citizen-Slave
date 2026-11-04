@@ -1,7 +1,9 @@
 import './style.css'
 import {loginRendering, nicknameValidation, profileRendering, selectedProfile} from "./players.js"
-import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile } from "./storage"
-import { toHome, toGamePlay } from './ui.js'
+import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile, getActiveProfile } from "./storage"
+import { toHome, toGamePlay, staticsRender } from './ui.js'
+import { gameState, resetGameState } from './gameState.js'
+import { distripution, game } from './game.js'
 
 
 
@@ -49,12 +51,12 @@ form.addEventListener("submit", (event) => {
             return
         }
         let newProfile = {nickname: inputValue, avatar: selectedIcon}
-        addProfiles(newProfile)
+        if(addProfiles(newProfile)) {
         profileRendering(profilesSection)
         submitMessage.textContent = "Your profile is added!"
         submitMessage.style.color = "green"
         form.reset()
-
+        }
     } else {
         submitMessage.textContent = "Your username must be (3-15) characters"
         submitMessage.style.color = "red"
@@ -119,9 +121,25 @@ desconnectBtn.addEventListener("click", () => {
 let nickname = document.querySelector("#nickname")
 nickname.addEventListener("click", () => toHome())
 
-// Game
+// GameStart
 let play = document.querySelector("#play")
-play.addEventListener("click", () => toGamePlay())
+play.addEventListener("click", () => {
+    resetGameState()
+    toGamePlay()
+    distripution()
+    staticsRender()
+})
+
+//GamePlay
+let playerCards = document.querySelector("#playercards")
+
+   playerCards.addEventListener("click", (event) => {
+    if(!event.target.closest(".card"))return
+    let cardType = event.target.closest(".card").getAttribute("data-card")
+    let card = event.target.closest(".card")
+    game(card, cardType)
+    staticsRender()
+   })
 
     
 

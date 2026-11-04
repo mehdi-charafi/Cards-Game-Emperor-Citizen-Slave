@@ -84,16 +84,16 @@
   <section id="gameplay" class="hidden items-center text-center lg:pl-50 lg:pr-50 mb-5">
   <div id="statistics" class="flex flex justify-between gap-10 bg-slate-900/90 border-3 border-amber-500/70 m-5 p-5 pl-10 pr-10 rounded-full text-xl md:text-2xl text-amber-100">
     <div id="rounds">
-    <p>Rounds: 0/12</p>
+    <p>Rounds: ??/12</p>
   </div>
   <div id="group">
-    <p>Group: 0/4</p>
+    <p>Group: ??/4</p>
   </div>
   <div id="Camp">
     <p>Actual Camp: ??</p>
   </div>
   <div id="points">
-    <p>Points: ??</p>
+    <p>Score: ??</p>
   </div>
   </div>
   <div id="botcards" class="flex gap-8 justify-center">
@@ -112,33 +112,33 @@
   </div>
   <div id="playGround" class="flex justify-center gap-15 items-center bg-slate-900/90 border-3 border-slate-600 m-5 p-10 rounded-3xl">
 
-<div id="playerprofile" class="flex gap-4"><span class="iconify text-amber-400 w-30 h-30 border-2 border-slate-600 rounded-xl" data-icon="game-icons:spectacle-lenses"></span>
-      <div><p class="text-bold text-3xl text-amber-100 mb-3">Guest</p><p class="text-bold text-xl text-amber-100">Score: ?</p></div></div>
+<div id="playerprofile" class="flex gap-4"><span id="playericon" class="iconify text-amber-400 w-30 h-30 border-2 border-slate-600 rounded-xl" data-icon="game-icons:spectacle-lenses"></span>
+      <div><p id="playername" class="text-bold text-3xl text-amber-100 mb-3">Guest</p><p id="playerscore" class="text-bold text-xl text-amber-100">Score: ?</p></div></div>
 
-<div id="pgcard1" class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl"></div>
+<div id="player-pg" class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl"></div>
 
 <div id="vs" class="w-30 h-30 bg-slate-900/90 border-2 border-amber-500/70 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(245,158,11,0.3)]">
     <span class="text-amber-400 font-extrabold text-4xl tracking-wider">VS</span>
 </div>
 
-<div id="pgcard2" class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl"></div>
+<div id="bot-pg" class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl"></div>
     
 <div id="botprofile" class="flex gap-4"><span class="iconify text-amber-400 w-30 h-30 border-2 border-slate-600 rounded-xl" data-icon="game-icons:robot-antennas"></span>
-      <div><p class="text-bold text-3xl text-amber-100 mb-3">Bot</p><p class="text-bold text-xl text-amber-100">Score: ?</p></div></div>
+      <div><p id="botname" class="text-bold text-3xl text-amber-100 mb-3">Bot</p><p id="botscore" class="text-bold text-xl text-amber-100">Score: ?</p></div></div>
 
 </div>
   </div>
-  <div id="playerCards" class="flex gap-8 justify-center">
+  <div id="playercards" class="flex gap-8 justify-center">
 
-    <div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+    <div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
 </div>
-<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+<div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
 </div>
-<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+<div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
 </div>
-<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+<div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
 </div>
-<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+<div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
 </div>
 
   </div>
