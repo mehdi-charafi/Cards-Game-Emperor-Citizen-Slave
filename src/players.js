@@ -29,7 +29,6 @@ export function loginRendering(loginSection) {
    let profiles = getProfiles()
    if(!activeProfile.nickname)return
    if(profiles.some((p) => p.nickname == activeProfile.nickname)) {
-   console.log(activeProfile)
    loginSection.innerHTML = `
    <div class="flex text-center gap-2">
       <span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="${activeProfile.avatar}"></span>
