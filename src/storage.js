@@ -1,5 +1,5 @@
 import { gameState, resetGameState } from './gameState.js'
-import { historyRender } from './ui';
+import { historyRender } from './ui.js';
 
 // profiles
 export function getProfiles() {

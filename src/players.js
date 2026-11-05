@@ -1,5 +1,5 @@
 
-import { getActiveProfile, getProfiles } from "./storage"
+import { getActiveProfile, getProfiles } from "./storage.js"
 
 
 export function nicknameValidation(inputValue) {

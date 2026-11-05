@@ -1,5 +1,5 @@
-import { gameState, resetGameState } from "./gameState"
-import { addHistory, getActiveProfile, getHistory, saveHistory } from "./storage"
+import { gameState, resetGameState } from "./gameState.js"
+import { addHistory, getActiveProfile, getHistory, saveHistory } from "./storage.js"
 
 
 let sections = document.querySelectorAll("section")
