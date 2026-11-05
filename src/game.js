@@ -90,8 +90,6 @@ let botCard = botCards.find(c => c.getAttribute("data-card") == botCardType && !
          }
          staticsRender()
          
-      } else {
-         
       }
 
       

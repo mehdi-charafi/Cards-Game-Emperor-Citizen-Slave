@@ -144,8 +144,8 @@ desconnectBtn.addEventListener("click", () => {
 // Navigations
 
 // home
-let nickname = document.querySelector("#nickname")
-nickname.addEventListener("click", () => toHome())
+let homeBtn = document.querySelectorAll(".home")
+homeBtn.forEach(b => b.addEventListener("click", () => toHome()))
 
 // GameStart
 let play = document.querySelectorAll(".play")

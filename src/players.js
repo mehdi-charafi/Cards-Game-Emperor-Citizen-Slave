@@ -33,7 +33,7 @@ export function loginRendering(loginSection) {
    loginSection.innerHTML = `
    <div class="flex text-center gap-2">
       <span class="iconify text-amber-400 w-13 h-13 border-2 border-slate-600 rounded-xl" data-icon="${activeProfile.avatar}"></span>
-      <p id="nickname" class="text-bold text-2xl text-amber-100 cursor-pointer">${activeProfile.nickname}</p>
+      <p  class="home text-bold text-2xl text-amber-100 cursor-pointer">${activeProfile.nickname}</p>
   </div>
    `
 }}
