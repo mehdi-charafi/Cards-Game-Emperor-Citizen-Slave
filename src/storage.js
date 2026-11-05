@@ -1,3 +1,5 @@
+import { gameState, resetGameState } from './gameState.js'
+import { historyRender } from './ui';
 
 // profiles
 export function getProfiles() {
@@ -44,4 +46,35 @@ export function setActiveProfile(activeP) {
 
 export function removeActiveProfile() {
     saveActiveProfile({})
+}
+
+// History 
+export function addHistory(result) {
+    let history = getHistory()
+        let hObj = {
+        nickname: getActiveProfile().nickname,
+        avatar: getActiveProfile().avatar,
+        result: result,
+        score: gameState.playerScore
+        }
+        history.push(hObj)
+        saveHistory(history)
+}
+
+export function saveHistory(history) {
+    localStorage.setItem("history", JSON.stringify(history))
+}
+
+export function getHistory(sort) {
+    let data = localStorage.getItem("history")
+    return data ? JSON.parse(data) : [];
+    
+}
+
+export function clearHistory() {
+    if(confirm("Are you sure ?")) {
+    let history = []
+    saveHistory(history)
+    historyRender()
+    }
 }

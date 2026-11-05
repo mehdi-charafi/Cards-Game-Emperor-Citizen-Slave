@@ -1,7 +1,7 @@
 import './style.css'
 import {loginRendering, nicknameValidation, profileRendering, selectedProfile} from "./players.js"
-import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile, getActiveProfile } from "./storage"
-import { toHome, toGamePlay, staticsRender } from './ui.js'
+import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile, getActiveProfile, clearHistory } from "./storage"
+import { toHome, toGamePlay, toRules, toHistory, staticsRender, historyRender } from './ui.js'
 import { gameState, resetGameState } from './gameState.js'
 import { distripution, game } from './game.js'
 
@@ -13,6 +13,7 @@ let loginSection = document.querySelector("#login")
 profileRendering(profilesSection)
 loginRendering(loginSection)
 selectedProfile(profilesSection)
+historyRender()
 
 
 // Load game
@@ -146,6 +147,33 @@ desconnectBtn.addEventListener("click", () => {
 // home
 let homeBtn = document.querySelectorAll(".home")
 homeBtn.forEach(b => b.addEventListener("click", () => toHome()))
+
+// rules
+let rulesBtn = document.querySelector("#rules-btn") 
+rulesBtn.addEventListener("click", () => toRules())
+
+// history
+let historyBtn = document.querySelector("#history-btn")
+historyBtn.addEventListener("click", () => toHistory())
+
+//clear history
+let clearBtn = document.querySelector("#clear-history-btn")
+clearBtn.addEventListener("click", () => clearHistory())
+
+// history search by name & filter
+let searchBtn = document.querySelector("#history-search")
+let selectBtn = document.querySelector("#filter-result")
+let name = ""
+let result = ""
+searchBtn.addEventListener("input", (event) => {
+      name = event.target.value
+    historyRender(name, result)
+})
+selectBtn.addEventListener("change", (event) => {
+    result = event.target.value
+    historyRender(name, result)
+})
+
 
 // GameStart
 let play = document.querySelectorAll(".play")

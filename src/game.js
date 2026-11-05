@@ -1,5 +1,5 @@
-import { gameState , saveGame} from "./gameState"
-import { staticsRender, playGroundRender, showGameOver } from "./ui"
+import { gameState , saveGame, resetGameState} from "./gameState"
+import { staticsRender, historyRender, deleteHistory, playGroundRender, showGameOver } from "./ui"
 
 //Deck
 let emperorCards = [{name: "emperor", url: "images/emperor.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}]
@@ -8,7 +8,6 @@ let slaveCards = [{name: "slave", url: "images/slave.png"}, {name: "citizen", ur
 // Duel
 
 export function duel(PlayerCard, BotCard) {
-   console.log(`PlayerCard = ${PlayerCard} and BotCard = ${BotCard}`)
    let winner = gameRule(PlayerCard, BotCard)
    if (winner == PlayerCard)return "vectory"
    else if ( winner == BotCard)return "defeat"
@@ -98,7 +97,11 @@ let botCard = botCards.find(c => c.getAttribute("data-card") == botCardType && !
             gameState.group += 1
          }
          if(gameState.round == 12) {
-         showGameOver()
+            let result = ""
+         if(gameState.playerScore > gameState.botScore)result="Vectory"
+         else if (gameState.playerScore < gameState.botScore)result="Defeat"
+         else result = "Tie"
+         showGameOver(result)
          resetGameState()
          return
       }
