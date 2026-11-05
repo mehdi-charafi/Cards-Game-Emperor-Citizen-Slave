@@ -1,7 +1,3 @@
-import { loginRendering } from "./players";
-
-let profiles = JSON.parse(localStorage.getItem("profiles")) || []
-let activeProfile = JSON.parse(localStorage.getItem("activeprofile")) || {}
 
 // profiles
 export function getProfiles() {
@@ -15,12 +11,18 @@ export function saveProfiles(profilesArray) {
 
 export function addProfiles(newProfile) {
     let profiles = getProfiles()
+    if(profiles.some(p => p.nickname == newProfile.nickname)) {
+        alert("The nickname is already used")
+        return false
+    }
     profiles.push(newProfile)
     saveProfiles(profiles)
+    return true
 }
 
 export function removeProfiles(profileName) {
     let profiles = getProfiles()
+    if(!window.confirm("Are you sure ?"))return
     profiles = profiles.filter((p) => p.nickname != profileName)
     saveProfiles(profiles)
     window.location.reload()
@@ -36,12 +38,10 @@ export function saveActiveProfile(activeP) {
 }
 
 export function setActiveProfile(activeP) {
-    activeProfile = activeP
-    saveActiveProfile(activeProfile)
+    saveActiveProfile(activeP)
 
 }
 
 export function removeActiveProfile() {
-    activeProfile = {}
-    saveActiveProfile(activeProfile)
+    saveActiveProfile({})
 }

@@ -1,6 +1,9 @@
 import './style.css'
-import {loginRendering, nicknameValidation, profileRendering} from "./players.js"
-import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile } from "./storage"
+import {loginRendering, nicknameValidation, profileRendering, selectedProfile} from "./players.js"
+import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile, getActiveProfile } from "./storage"
+import { toHome, toGamePlay, staticsRender } from './ui.js'
+import { gameState, resetGameState } from './gameState.js'
+import { distripution, game } from './game.js'
 
 
 
@@ -9,6 +12,33 @@ let profilesSection = document.querySelector("#exist-profiles")
 let loginSection = document.querySelector("#login")
 profileRendering(profilesSection)
 loginRendering(loginSection)
+selectedProfile(profilesSection)
+
+
+// Load game
+if (gameState.round > 1 && gameState.round < 12) {
+    toGamePlay();
+    staticsRender();
+     
+    let playerSpace = document.querySelector("#playercards")
+       let botSpace = document.querySelector("#botcards")
+       playerSpace.innerHTML = ""
+gameState.playerHand.forEach(c => {
+   playerSpace.innerHTML += `
+   <div data-card="${c.name}" class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+   <img src="${c.url}">
+   </div>
+   `
+});
+botSpace.innerHTML = ""
+gameState.botHand.forEach(c => {
+   botSpace.innerHTML += `
+   <div data-card="${c.name}" class="card overflow-hidden bg-cover bg-center w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+   <img class="w-full h-full object-cover" src="images/bg-card.jpg">
+   </div>
+   `
+});
+}
 
 
 // Profile Creation
@@ -47,12 +77,12 @@ form.addEventListener("submit", (event) => {
             return
         }
         let newProfile = {nickname: inputValue, avatar: selectedIcon}
-        addProfiles(newProfile)
+        if(addProfiles(newProfile)) {
         profileRendering(profilesSection)
         submitMessage.textContent = "Your profile is added!"
         submitMessage.style.color = "green"
         form.reset()
-
+        }
     } else {
         submitMessage.textContent = "Your username must be (3-15) characters"
         submitMessage.style.color = "red"
@@ -111,6 +141,31 @@ desconnectBtn.addEventListener("click", () => {
 })
 
     
+// Navigations
+
+// home
+let homeBtn = document.querySelectorAll(".home")
+homeBtn.forEach(b => b.addEventListener("click", () => toHome()))
+
+// GameStart
+let play = document.querySelectorAll(".play")
+play.forEach(b => b.addEventListener("click", () => {
+    resetGameState()
+    toGamePlay()
+    distripution()
+    staticsRender()
+}))
+
+//GamePlay
+let playerCards = document.querySelector("#playercards")
+
+   playerCards.addEventListener("click", (event) => {
+    if(!event.target.closest(".card"))return
+    let cardType = event.target.closest(".card").getAttribute("data-card")
+    let card = event.target.closest(".card")
+    game(card, cardType)
+    staticsRender()
+   })
 
     
 
