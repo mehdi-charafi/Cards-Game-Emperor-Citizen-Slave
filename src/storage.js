@@ -1,7 +1,5 @@
-import { loginRendering } from "./players";
-
-let profiles = JSON.parse(localStorage.getItem("profiles")) || []
-let activeProfile = JSON.parse(localStorage.getItem("activeprofile")) || {}
+import { gameState, resetGameState } from './gameState.js'
+import { historyRender } from './ui';
 
 // profiles
 export function getProfiles() {
@@ -15,12 +13,18 @@ export function saveProfiles(profilesArray) {
 
 export function addProfiles(newProfile) {
     let profiles = getProfiles()
+    if(profiles.some(p => p.nickname == newProfile.nickname)) {
+        alert("The nickname is already used")
+        return false
+    }
     profiles.push(newProfile)
     saveProfiles(profiles)
+    return true
 }
 
 export function removeProfiles(profileName) {
     let profiles = getProfiles()
+    if(!window.confirm("Are you sure ?"))return
     profiles = profiles.filter((p) => p.nickname != profileName)
     saveProfiles(profiles)
     window.location.reload()
@@ -36,12 +40,41 @@ export function saveActiveProfile(activeP) {
 }
 
 export function setActiveProfile(activeP) {
-    activeProfile = activeP
-    saveActiveProfile(activeProfile)
+    saveActiveProfile(activeP)
 
 }
 
 export function removeActiveProfile() {
-    activeProfile = {}
-    saveActiveProfile(activeProfile)
+    saveActiveProfile({})
+}
+
+// History 
+export function addHistory(result) {
+    let history = getHistory()
+        let hObj = {
+        nickname: getActiveProfile().nickname,
+        avatar: getActiveProfile().avatar,
+        result: result,
+        score: gameState.playerScore
+        }
+        history.push(hObj)
+        saveHistory(history)
+}
+
+export function saveHistory(history) {
+    localStorage.setItem("history", JSON.stringify(history))
+}
+
+export function getHistory(sort) {
+    let data = localStorage.getItem("history")
+    return data ? JSON.parse(data) : [];
+    
+}
+
+export function clearHistory() {
+    if(confirm("Are you sure ?")) {
+    let history = []
+    saveHistory(history)
+    historyRender()
+    }
 }

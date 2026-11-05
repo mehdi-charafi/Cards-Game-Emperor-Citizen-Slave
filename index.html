@@ -10,7 +10,7 @@
   </head>
   <body>
   <header class="flex justify-between items-center bg-slate-950 h-13 w-full border-blue-300 lg:pl-20 lg:pr-20 h-[60px]">
-  <div id="icon&name" class="hidden lg:block lg:flex items-center gap-10">
+  <div id="icon&name" class="hidden lg:flex items-center gap-10">
     <span class="iconify text-amber-400 w-13 h-13 rounded-xl" data-icon="game-icons:crown"></span>
     <p class="text-bold text-3xl text-amber-100">Emperor, Citizen, Slave</p>
   </div>
@@ -23,19 +23,21 @@
   </div>
     <button id="desconnect" type="button" class="bg-slate-600 border-2 border-black w-[150px] h-[46px] rounded-3xl cursor-pointer text-lg">Desconnect</button>
   </div>
+  
+  </div>
 
   </header>
 
   <!---------------------------Profiles Section ------------------------------> 
 
-  <section id="profiles" class="items-center text-center lg:pl-50 lg:pr-50">
+  <section id="profiles" class="items-center text-center lg:pl-50 lg:pr-50 mb-3">
     <h1 class="p-5 text-4xl md:text-5xl font-black tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_6px_rgba(0,0,0,0.9)] lg:border-b-2 border-amber-500/40 pb-2 inline-block"><p class="">Cards Game:</p><p> Emperor, Citizen, Slave</p></h1>
-    <div id="profiles-manager" class="flex flex-col bg-slate-900/90 border-3 border-amber-500/70 m-5 p-10 rounded-3xl">
+    <div id="profiles-manager" class="flex flex-col bg-slate-900/90 border-3 border-amber-500/70 m-5 p-10 rounded-3xl items-center">
         
         <div class="lg:flex justify-center gap-20">
-            <div id="div1">
-                <h2 class="text-xl md:text-2xl font-bold text-amber-100 tracking-widest uppercase text-center drop-shadow border-b-2 border-amber-100 p-5">Create A New Profile</h2>
-                <form id="profile-creation" class="bg-slate-950/80 rounded-xl mt-5 p-5 shadow-2xl">
+            <div id="div1" class="p-5 lg:p-0">
+                <h2 class="text-xl md:text-2xl font-bold text-amber-100 tracking-widest uppercase text-center drop-shadow border-b-2 border-amber-100 p-5 lg:w-auto w-[350px]">Create A New Profile</h2>
+                <form id="profile-creation" class="bg-slate-950/80 rounded-xl mt-5  p-5 shadow-2xl">
                   <div>
                     <h3 class="text-lg md:text-xl text-[#94a3b8] ">Enter your nickname</h3>
                     <input id="profile-creation-input" class="border-2 rounded-3xl p-2 w-[250px] mt-3 lg:m-3 text-white text-center mb-5" type="text" placeholder="3-15 characters">
@@ -65,33 +67,296 @@
             <div class="w-[2px] bg-gradient-to-b from-transparent via-amber-500/70 to-transparent self-stretch my-2"></div>
             <div id="div2">
                 <h2 class="text-xl md:text-2xl font-bold text-amber-100 tracking-widest uppercase text-center drop-shadow border-b-2 border-amber-100 p-5">Exist Profiles</h2>
-                <div id="exist-profiles" class="bg-slate-950/80 rounded-xl mt-5 pt-1 pb-1 lg:p-5 shadow-2xl">
+                <div id="exist-profiles" class="bg-slate-950/80 rounded-xl mt-5 pt-1 pb-1 lg:pt-5 p-5 m-5 shadow-2xl lg:min-w-[390px] lg:min-h-[385px]">
                   
                 </div>
 
             </div>
         </div>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10 w-full">
+    <!-- Play-->
+    <button type="button" id="play" class="play bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-xl shadow-[0_0_15px_rgba(34,197,94,0.5)] px-6 py-3 rounded-3xl cursor-pointer w-full sm:w-[180px] h-[50px] border-2 border-slate-600 hover:scale-105 transition-all">
+        Play
+    </button>
+    
+    <!-- Rules -->
+    <button type="button" id="rules-btn" class="bg-slate-800 hover:bg-slate-700 text-amber-100 font-bold text-xl px-6 py-3 rounded-3xl cursor-pointer w-full sm:w-[150px] h-[50px] border-2 border-amber-500/50 hover:scale-105 transition-all shadow-[0_0_10px_rgba(245,158,11,0.2)]">
+        Rules
+    </button>
+    
+    <!-- History -->
+    <button type="button" id="history-btn" class="bg-slate-800 hover:bg-slate-700 text-amber-100 font-bold text-xl px-6 py-3 rounded-3xl cursor-pointer w-full sm:w-[150px] h-[50px] border-2 border-amber-500/50 hover:scale-105 transition-all shadow-[0_0_10px_rgba(245,158,11,0.2)]">
+        History
+    </button>
+</div>
     </div>
 
   </section>
   
-<!------------------GamePlay Section ------------------------------>
+<!------------------GamePlay Section ------------------------------->
 
-  <section id="gameplay class=hidden">
+  <section id="gameplay" class="hidden items-center text-center lg:pl-50 lg:pr-50 mb-5">
+  <div id="statistics" class="flex flex justify-between gap-10 bg-slate-900/90 border-3 border-amber-500/70 m-5 p-5 pl-10 pr-10 rounded-full text-xl md:text-2xl text-amber-100">
+    <div id="rounds">
+    <p>Rounds: ??/12</p>
+  </div>
+  <div id="group">
+    <p>Group: ??/4</p>
+  </div>
+  <div id="Camp">
+    <p>Actual Camp: ??</p>
+  </div>
+  <div id="points">
+    <p>Score: ??</p>
+  </div>
+  </div>
+  <div id="botcards" class="flex gap-8 justify-center min-h-[13rem]">
+
+<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+<div class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+
+  </div>
+  <div id="playGround" class="flex justify-center gap-15 items-center bg-slate-900/90 border-3 border-slate-600 m-5 p-10 rounded-3xl">
+
+<div id="playerprofile" class="flex gap-4"><span id="playericon" class="iconify text-amber-400 w-30 h-30 border-2 border-slate-600 rounded-xl" data-icon="game-icons:spectacle-lenses"></span>
+      <div><p id="playername" class="text-bold text-3xl text-amber-100 mb-3">Guest</p><p id="playerscore" class="text-bold text-xl text-amber-100">Score: ?</p></div></div>
+
+<div id="player-pg" class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl"></div>
+
+<div id="vs" class="w-30 h-30 bg-slate-900/90 border-2 border-amber-500/70 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+    <span class="text-amber-400 font-extrabold text-4xl tracking-wider">VS</span>
+</div>
+
+<div id="bot-pg" class="w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl"></div>
+    
+<div id="botprofile" class="flex gap-4"><span class="iconify text-amber-400 w-30 h-30 border-2 border-slate-600 rounded-xl" data-icon="game-icons:robot-antennas"></span>
+      <div><p id="botname" class="text-bold text-3xl text-amber-100 mb-3">Bot</p><p id="botscore" class="text-bold text-xl text-amber-100">Score: ?</p></div></div>
+
+</div>
+  </div>
+  <div id="playercards" class="flex gap-8 justify-center min-h-[13rem]">
+
+    <div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+<div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+<div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+<div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+<div class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
+</div>
+
+  </div>
 
   </section>
 
-  <!------------------------History Section ------------------------------>
 
-  <section id="history class=hidden">
+  <!------------------------ Rules Section ------------------------------->
+<section id="rules" class="hidden items-center text-center lg:px-40 mb-10">
+  <div class="bg-slate-900/95 border-4 border-amber-500/70 m-5 p-8 lg:p-12 rounded-3xl shadow-[0_0_50px_rgba(245,158,11,0.2)] flex flex-col items-center w-full max-w-4xl mx-auto">
+    
+    <div class="flex flex-col items-center gap-3 mb-6">
+      <span class="iconify text-amber-400 w-20 h-20 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]" data-icon="game-icons:scroll-unfurled"></span>
+      <h1 class="text-3xl md:text-5xl font-black uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_6px_rgba(0,0,0,0.9)]">
+        Game Rules
+      </h1>
+      <p class="text-slate-400 text-base md:text-lg">Master the hierarchy of Emperor, Citizen, and Slave</p>
+    </div>
 
-  </section>
+    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent my-4"></div>
 
-<!------------------------Rules Section ------------------------------>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full my-6 text-left">
+      
+      <div class="bg-slate-950/80 border-2 border-slate-700 p-6 rounded-2xl shadow-lg flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <span class="iconify text-amber-400 w-8 h-8 flex-shrink-0" data-icon="game-icons:hierarchy"></span>
+          <h3 class="text-xl font-bold text-amber-100 uppercase tracking-wide">The Hierarchy</h3>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          The game revolves around three main roles with a rock-paper-scissors dynamic: <span class="text-amber-400 font-bold">Emperor</span> beats Citizen, <span class="text-amber-400 font-bold">Citizen</span> beats Slave, but the <span class="text-amber-400 font-bold">Slave</span> beats the Emperor!
+        </p>
+      </div>
 
-  <section id="rules" class="hidden">
+      <div class="bg-slate-950/80 border-2 border-slate-700 p-6 rounded-2xl shadow-lg flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <span class="iconify text-amber-400 w-8 h-8 flex-shrink-0" data-icon="game-icons:podium"></span>
+          <h3 class="text-xl font-bold text-amber-100 uppercase tracking-wide">Scoring Points</h3>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Standard victories grant <span class="text-amber-400 font-bold">+1 point</span>. However, if the <span class="text-amber-400 font-bold">Slave</span> manages to defeat the Emperor, it triggers a major upset granting a massive <span class="text-emerald-400 font-bold">+5 points</span>!
+        </p>
+      </div>
 
-  </section>
+      <div class="bg-slate-950/80 border-2 border-slate-700 p-6 rounded-2xl shadow-lg flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <span class="iconify text-amber-400 w-8 h-8 flex-shrink-0" data-icon="game-icons:swords-emblem"></span>
+          <h3 class="text-xl font-bold text-amber-100 uppercase tracking-wide">Camps & Groups</h3>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          The match spans across 4 groups (totaling 12 rounds). Your deck alternates between playing as the powerful <span class="text-amber-400 font-bold">Emperor Camp</span> or the underdog <span class="text-amber-400 font-bold">Slave Camp</span>.
+        </p>
+      </div>
+
+      <div class="bg-slate-950/80 border-2 border-slate-700 p-6 rounded-2xl shadow-lg flex flex-col gap-3">
+        <div class="flex items-center gap-3">
+          <span class="iconify text-amber-400 w-8 h-8 flex-shrink-0" data-icon="game-icons:hourglass"></span>
+          <h3 class="text-xl font-bold text-amber-100 uppercase tracking-wide">Persistence</h3>
+        </div>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Your progress, scores, and remaining cards are automatically saved in real-time. Feel free to refresh or leave; your game state will safely wait for you.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent my-4"></div>
+
+    <div class="flex justify-center mt-4">
+      <button id="back-to-menu-from-rules" type="button" class="home bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-bold text-lg px-8 py-3 rounded-3xl cursor-pointer hover:scale-105 transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)] border-2 border-slate-700">
+        Back
+      </button>
+    </div>
+
+  </div>
+</section>
+
+ 
+<!------------------------ History Section ------------------------------->
+<section id="history" class="hidden items-center text-center lg:px-40 mb-10">
+  <div class="bg-slate-900/95 border-4 border-amber-500/70 m-5 p-8 lg:p-12 rounded-3xl shadow-[0_0_50px_rgba(245,158,11,0.2)] flex flex-col items-center w-full max-w-4xl mx-auto">
+    
+    <!-- Title & Header -->
+    <div class="flex flex-col items-center gap-3 mb-6">
+      <span class="iconify text-amber-400 w-20 h-20 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]" data-icon="game-icons:history"></span>
+      <h1 class="text-3xl md:text-5xl font-black uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_6px_rgba(0,0,0,0.9)]">
+        Match History
+      </h1>
+      <p class="text-slate-400 text-base md:text-lg">Review your past battles and triumphs</p>
+    </div>
+
+    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent my-4"></div>
+
+    <!-- Search and Filters Bar -->
+    <div class="flex flex-col md:flex-row gap-4 w-full my-4 justify-between items-center">
+      <!-- Search by Player Name -->
+      <div class="w-full md:w-1/2">
+        <input 
+          type="text" 
+          id="history-search" 
+          placeholder="Search by player name..." 
+          class="w-full bg-slate-950/80 border-2 border-slate-700 text-amber-100 placeholder-slate-500 px-4 py-3 rounded-2xl focus:outline-none focus:border-amber-500 transition-all text-sm shadow-inner"
+        >
+      </div>
+
+      <!-- Filters (Result & Date) -->
+      <div class="flex flex-row gap-2 w-full md:w-1/2 justify-end">
+        <!-- Filter by Result -->
+        <select 
+          id="filter-result" 
+          class="w-1/2 bg-slate-950/80 border-2 border-slate-700 text-amber-100 px-3 py-3 rounded-2xl focus:outline-none focus:border-amber-500 transition-all text-sm cursor-pointer shadow-inner"
+        >
+          <option value="all">All Results</option>
+          <option value="Vectory">Victories</option>
+          <option value="Defeat">Defeats</option>
+          <option value="Tie">Ties</option>
+        </select>
+
+        <!-- Filter by Date -->
+        <select 
+          id="filter-date" 
+          class="w-1/2 bg-slate-950/80 border-2 border-slate-700 text-amber-100 px-3 py-3 rounded-2xl focus:outline-none focus:border-amber-500 transition-all text-sm cursor-pointer shadow-inner"
+        >
+          <option value="all">All Time</option>
+          <option value="today">Today</option>
+          <option value="week">Last 7 Days</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- History List Container -->
+    <div id="history-container" class="w-full flex flex-col gap-4 my-4 max-h-[400px] overflow-y-auto pr-2">
+    </div>
+
+    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent my-4"></div>
+
+    <!-- Buttons: Clear History & Back -->
+    <div class="flex flex-col sm:flex-row justify-center gap-4 mt-2 w-full">
+      <button id="clear-history-btn" type="button" class="bg-red-950/80 hover:bg-red-900 text-red-200 font-bold text-lg px-8 py-3 rounded-3xl cursor-pointer hover:scale-105 transition-all shadow-[0_0_15px_rgba(239,68,68,0.3)] border-2 border-red-500/50">
+        Clear History
+      </button>
+
+      <button id="back-to-menu-from-history" type="button" class="home bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-bold text-lg px-8 py-3 rounded-3xl cursor-pointer hover:scale-105 transition-all shadow-[0_0_15px_rgba(245,158,11,0.4)] border-2 border-slate-700">
+        Back
+      </button>
+    </div>
+
+  </div>
+</section>
+
+  <!------------------------ Game Over ------------------------------->
+<section id="game-over" class="hidden items-center text-center lg:px-50 mb-10">
+  <div class="bg-slate-900/95 border-4 border-amber-500/70 m-5 p-8 lg:p-12 rounded-3xl shadow-[0_0_50px_rgba(245,158,11,0.2)] flex flex-col items-center">
+    
+    
+    <div id="result-header" class="flex flex-col items-center gap-3 mb-6">
+      <span id="result-icon" class="iconify text-amber-400 w-24 h-24 drop-shadow-[0_0_15px_rgba(245,158,11,0.5)]" data-icon="game-icons:trophy"></span>
+      <h1 id="result-title" class="text-4xl md:text-6xl font-black uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_6px_rgba(0,0,0,0.9)]">
+        Victory!
+      </h1>
+      <p id="result-subtitle" class="text-slate-400 text-lg md:text-xl">You have conquered the Emperor Game!</p>
+    </div>
+
+    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent my-4"></div>
+
+    <!-- Match Summary -->
+    <div id="game-summary" class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
+      
+      <!-- Player Final Score -->
+      <div class="bg-slate-950/80 border-2 border-slate-700 p-5 rounded-2xl flex flex-col items-center shadow-lg">
+        <span id="pav" class="iconify text-amber-400 w-10 h-10 mb-2" data-icon="game-icons:user-defined"></span>
+        <p class="text-slate-400 text-sm uppercase tracking-widest">Player Score</p>
+        <p id="summary-player-score" class="text-3xl font-extrabold text-amber-100 mt-1">0</p>
+      </div>
+
+      <!-- Bot Final Score -->
+      <div class="bg-slate-950/80 border-2 border-slate-700 p-5 rounded-2xl flex flex-col items-center shadow-lg">
+        <span class="iconify text-slate-400 w-10 h-10 mb-2" data-icon="game-icons:robot-antennas"></span>
+        <p class="text-slate-400 text-sm uppercase tracking-widest">Bot Score</p>
+        <p id="summary-bot-score" class="text-3xl font-extrabold text-slate-300 mt-1">0</p>
+      </div>
+
+      <!-- Total Rounds Completed -->
+      <div class="bg-slate-950/80 border-2 border-slate-700 p-5 rounded-2xl flex flex-col items-center shadow-lg">
+        <span class="iconify text-amber-400 w-10 h-10 mb-2" data-icon="game-icons:card-play"></span>
+        <p class="text-slate-400 text-sm uppercase tracking-widest">Rounds Played</p>
+        <p id="summary-rounds" class="text-3xl font-extrabold text-amber-100 mt-1">12 / 12</p>
+      </div>
+
+    </div>
+
+    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent my-4"></div>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row gap-5 mt-6 w-full justify-center">
+      <button  type="button" class="play bg-gradient-to-r from-emerald-500 to-green-600 text-white font-bold text-xl shadow-[0_0_15px_rgba(34,197,94,0.4)] px-8 py-3 rounded-3xl cursor-pointer hover:scale-105 transition-all border-2 border-slate-700">
+        Play Again
+      </button>
+      <button type="button" class="home bg-slate-800 hover:bg-slate-700 text-amber-100 font-bold text-xl px-8 py-3 rounded-3xl cursor-pointer hover:scale-105 transition-all border-2 border-slate-600">
+        Back
+      </button>
+    </div>
+
+  </div>
+</section>
 
 <!---------------------------End ------------------------------>
     <script type="module" src="/src/main.js"></script>
