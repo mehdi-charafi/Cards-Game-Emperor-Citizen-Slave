@@ -1,6 +1,6 @@
-import './style.css'
+
 import {loginRendering, nicknameValidation, profileRendering, selectedProfile} from "./players.js"
-import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile, getActiveProfile, clearHistory } from "./storage"
+import { addProfiles, removeProfiles, setActiveProfile, removeActiveProfile, getActiveProfile, clearHistory } from "./storage.js"
 import { toHome, toGamePlay, toRules, toHistory, staticsRender, historyRender } from './ui.js'
 import { gameState, resetGameState } from './gameState.js'
 import { distripution, game } from './game.js'

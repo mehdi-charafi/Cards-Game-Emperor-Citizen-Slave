@@ -1,5 +1,5 @@
-import { gameState , saveGame, resetGameState} from "./gameState"
-import { staticsRender, historyRender, deleteHistory, playGroundRender, showGameOver } from "./ui"
+import { gameState , saveGame, resetGameState} from "./gameState.js"
+import { staticsRender, historyRender, deleteHistory, playGroundRender, showGameOver } from "./ui.js"
 
 //Deck
 let emperorCards = [{name: "emperor", url: "images/emperor.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}, {name: "citizen", url: "images/citizen.png"}]
