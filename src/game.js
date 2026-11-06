@@ -44,19 +44,21 @@ export function distripution(card, botCard) {
 playerSpace.innerHTML = ""
 gameState.playerHand.forEach(c => {
    playerSpace.innerHTML += `
-   <div data-card="${c.name}" class="card w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer">
-   <img src="${c.url}">
+   <div data-card="${c.name}" class="card w-24 h-36 md:w-36 md:h-52 bg-slate-900/90 border-2 border-slate-600 rounded-xl md:rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-amber-500/70 hover:scale-105 cursor-pointer overflow-hidden">
+   <img src="${c.url}" class="w-full h-full object-cover">
    </div>
    `
 });
 botSpace.innerHTML = ""
 gameState.botHand.forEach(c => {
    botSpace.innerHTML += `
-   <div data-card="${c.name}" class="card overflow-hidden bg-cover bg-center w-36 h-52 bg-slate-900/90 border-2 border-slate-600 rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+   <div data-card="${c.name}" class="card overflow-hidden bg-cover bg-center w-24 h-36 md:w-36 md:h-52 bg-slate-900/90 border-2 border-slate-600 rounded-xl md:rounded-2xl flex flex-col items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
    <img class="w-full h-full object-cover" src="images/bg-card.jpg">
    </div>
    `
 });
+   
+
 saveGame()
 }
 
