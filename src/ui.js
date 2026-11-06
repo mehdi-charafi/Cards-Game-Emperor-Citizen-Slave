@@ -62,6 +62,8 @@ export function deleteHistory() {
 export function staticsRender() {
     let s = gameState
     let activeP = getActiveProfile()
+    
+    // Desktop
     let roundStatic = document.querySelector("#rounds")
     let groupStatic = document.querySelector("#group")
     let campStatic = document.querySelector("#Camp")
@@ -70,17 +72,34 @@ export function staticsRender() {
     let botScore = document.querySelector("#botscore")
     let playerName = document.querySelector("#playername")
     let playerIcon = document.querySelector("#playericon")
-   
 
-    roundStatic.textContent = `Rounds: ${s.round}/12`
-    groupStatic.textContent = `Group: ${s.group}/4`
-    campStatic.textContent = `Actual Camp: ${s.currentCamp}`
-    scoreStatic.textContent = `Score: ${s.playerScore}`
-    playerScore.textContent = `Score: ${s.playerScore}`
-    botScore.textContent = `Score: ${s.botScore}`
-    playerName.textContent = `${activeP.nickname}`
-    playerIcon.setAttribute("data-icon", `${activeP.avatar}`);
+    // Mobile
+    let playerScoreMobile = document.querySelector("#playerscore-mobile")
+    let botScoreMobile = document.querySelector("#botscore-mobile")
+    let playerNameMobile = document.querySelector("#playername-mobile")
+    let playerIconMobile = document.querySelector("#playericon-mobile")
+
+    // General statics
+    if (roundStatic) roundStatic.textContent = `Rounds: ${s.round}/12`
+    if (groupStatic) groupStatic.textContent = `Group: ${s.group}/4`
+    if (campStatic) campStatic.textContent = `Camp: ${s.currentCamp}`
+    if (scoreStatic) scoreStatic.textContent = `Score: ${s.playerScore}`
     
+    // Players Score
+    if (playerScore) playerScore.textContent = `Score: ${s.playerScore}`
+    if (playerScoreMobile) playerScoreMobile.textContent = `Score: ${s.playerScore}`
+
+    if (botScore) botScore.textContent = `Score: ${s.botScore}`
+    if (botScoreMobile) botScoreMobile.textContent = `Score: ${s.botScore}`
+
+    let nickname = activeP && activeP.nickname ? activeP.nickname : "Guest"
+    let avatar = activeP && activeP.avatar ? activeP.avatar : "game-icons:spectacle-lenses"
+
+    if (playerName) playerName.textContent = nickname
+    if (playerNameMobile) playerNameMobile.textContent = nickname
+
+    if (playerIcon) playerIcon.setAttribute("data-icon", avatar)
+    if (playerIconMobile) playerIconMobile.setAttribute("data-icon", avatar)
 }
 
 export function playGroundRender(card, botCard) {
