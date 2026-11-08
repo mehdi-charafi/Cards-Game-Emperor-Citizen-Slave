@@ -2,6 +2,8 @@
 
 An interactive, responsive strategy card game built with modern native JavaScript, Tailwind CSS CLI, and HTML5. Play against an AI opponent in the legendary high-stakes psychological card duel!
 
+🌐 **Live Demo:** [Check out the live game here](https://mehdi-charafi.github.io/Cards-Game-Emperor-Citizen-Slave/)
+
 🌟 Overview
 
 Emperor, Citizen, Slave is a tactical card game inspired by the famous strategy dynamics of the Kaiji universe. Players match their tactical skills against an automated bot across multiple rounds, balancing risk between the powerful Emperor, reliable Citizens, and the underdog Slave.
